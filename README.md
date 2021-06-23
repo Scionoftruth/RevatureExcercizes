@@ -1,2 +1,2 @@
 # RevatureExcercizes
-# Answers to live questions
+Answers to live questions
