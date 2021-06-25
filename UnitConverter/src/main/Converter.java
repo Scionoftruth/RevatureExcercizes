@@ -21,8 +21,8 @@ public class Converter {
 		while(menuSelection != 4) {
 			System.out.println("Please select an option:");
 			System.out.println("1. Temperature Conversions");
-			System.out.println("2. Distance Conversions");
-			System.out.println("3. Volume Conversions");
+			System.out.println("2. Volume Conversions");
+			System.out.println("3. Distance Conversions");
 			System.out.println("4. Quit");
 			
 			Scanner scanner = new Scanner(System.in);
