@@ -9,7 +9,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//scanner = new Scanner(System.in);
 		RoomManager rm = new RoomManager();
 		rm.init();
 		Player player = new Player();
@@ -25,31 +24,32 @@ public class Main {
 	
 	private static void printRoom(Player player) {
 		Room cur = player.getCurrentRoom();
+		System.out.println("");
 		System.out.println(cur.getName());
 		System.out.println("");
 		System.out.println(cur.getLongDescription());
 		System.out.println("");
 		System.out.println("Exits:");
-		System.out.println(cur.getExits().toString());
+		cur.printExits(cur);
 	}
 	
 	private static String[] collectInput() {
-		System.out.println("Where would you like to go?");
+		System.out.println("Where would you like to go?"+"\n"+"Type go (direction) or quit to end");
 		String[] input = scanner.nextLine().toLowerCase().split(" ");
 		return input;
 	}
 	
 	private static void parse(String[] command, Player player) {
-		/*do {
-			for (int i=0; i<command.length; i++) {
-				
-			}
-		}while(command[0] != ("quit"));*/
 		if(command[0].equals("go")) {
-			player.setCurrentRoom(player.getCurrentRoom().getExit(command[1]));
-		}else if (command[0]=="quit") {
-			System.exit(0);
+			
+			if (player.getCurrentRoom().getExit(player.getCurrentRoom(),command[1]) != null) {
+				player.setCurrentRoom(player.getCurrentRoom().getExit(player.getCurrentRoom(),command[1]));
+			}else {
+				System.out.println("You cannot go that way!");
+			}
+		}else if (command[0].equals("quit")) {
 			System.out.println("Thanks for Playing!");
+			System.exit(0);
 		}else {
 			System.out.println("Please enter a correct command"+"\n");
 		}
